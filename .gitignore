@@ -1,0 +1,23 @@
+# Node modules (installed packages)
+node_modules/
+
+# Build logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables (if any)
+.env
+
+# Mac system files
+.DS_Store
+
+# VS Code settings (optional)
+.vscode/
+
+# Temporary files
+*.log
+*.tmp
+
+# OS metadata
+Thumbs.db
