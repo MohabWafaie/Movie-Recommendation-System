@@ -1,5 +1,5 @@
-import { getPopularMovies } from './api/tmdb.js';
+import { getMovies } from './api/tmdb.js';
 import { renderMovies } from './components/MovieCard.js';
-getPopularMovies().then(movies => {
-    renderMovies(movies, document.getElementById('app'));
+getMovies("movie/popular").then(data => {
+    renderMovies(data.results, document.getElementById('app'));
 });

@@ -1,4 +1,6 @@
-export function renderMovies(movies: any[], container: HTMLElement) {
+import { Movie } from "../interfaces";
+
+export function renderMovies(movies: Movie[], container: HTMLElement) {
   container.innerHTML = `
     <div class="row">
       ${movies.map(movie => `

@@ -1,6 +1,7 @@
-import { getPopularMovies } from './api/tmdb.js';
+import { getMovies } from './api/tmdb.js';
 import { renderMovies } from './components/MovieCard.js';
+import { Page } from './interfaces.js';
 
-getPopularMovies().then(movies => {
-  renderMovies(movies, document.getElementById('app')!);
+getMovies<Page>("movie/popular").then(data => {
+  renderMovies(data.results, document.getElementById('app')!);
 });

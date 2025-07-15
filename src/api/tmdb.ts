@@ -1,8 +1,22 @@
+type QueryParams = Record<string, string>;
+
 const API_KEY = 'f74d3ebb9516dbf77e6f04d3fa5e4537';
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-export async function getPopularMovies() {
-  const res = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
-  const data = await res.json();
-  return data.results;
+export async function getMovies<T>(
+  endpoint: string,
+  params: QueryParams = {}
+): Promise<T> {
+  const url : URL = new URL(`${BASE_URL}/${endpoint}`);
+  url.searchParams.append('api_key', API_KEY);
+  Object.entries(params).forEach(([key, value]) => {
+    url.searchParams.append(key, value);
+  });
+
+  const response = await fetch(url.toString());
+  if (!response.ok) {
+    throw new Error(`Error fetching data: ${response.statusText}`);
+  }
+  const data : T = await response.json();
+  return data;
 }
